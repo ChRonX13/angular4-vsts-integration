@@ -26,7 +26,7 @@ module.exports = function (config) {
     },
     reporters: ['progress', 'kjhtml', 'junit'],
     junitReporter: {
-      outputDir: '', // results will be saved as $outputDir/$browserName.xml
+      outputDir: 'testresults', // results will be saved as $outputDir/$browserName.xml
       outputFile: 'test.xml' // if included, results will be saved as $outputDir/$browserName/$outputFile
     },
     port: 9876,
