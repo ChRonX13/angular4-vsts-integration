@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 60.0.3112 (Windows 10 0.0.0)" package="" timestamp="2017-09-01T06:50:27" id="0" hostname="LATPCDEV18" tests="3" errors="0" failures="0" time="0.437">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"/>
+  </properties>
+  <testcase name="AppComponent should create the app" time="0.231" classname="Chrome_60_0_3112_(Windows_10_0_0_0).AppComponent"/>
+  <testcase name="AppComponent should have as title 'Tour of Heroes'" time="0.109" classname="Chrome_60_0_3112_(Windows_10_0_0_0).AppComponent"/>
+  <testcase name="AppComponent should render title in a h1 tag" time="0.097" classname="Chrome_60_0_3112_(Windows_10_0_0_0).AppComponent"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
