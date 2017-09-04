@@ -40,6 +40,7 @@ In order to get client side routing to work for an application on Azure App Serv
 This section involves creating the Build definition in VSTS in order to build the application ready for deployment. Credit to [Seth Reid's article](https://sethreid.co.nz/deploying-angular-cli-project-using-vsts-build-release/) for pointing me to the majority of the grunt work.
 
 1. Create a new Empty build process in VSTS
+![]({{site.baseurl}}/empty.PNG)
 
 2. Click on **Process** and ensure that the **Default agent queue** is set to **Hosted VS2017**. This will help prevent issues later on with PhantomJS and how it resolves the npm dependancy as documented [here](https://github.com/Microsoft/vsts-tasks/issues/1486)
 
