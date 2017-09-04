@@ -124,7 +124,7 @@ This section involves creating the Build definition in VSTS in order to build th
 
   ![](testresults.PNG)
 
-* In order to enable client side routing on the Azure App Service, we'll need to copy the web.config file into the distribution folder for packaging. [Client Side Routing](##client-side-routing)
+* In order to enable client side routing on the Azure App Service, we'll need to copy the web.config file into the distribution folder for packaging. [Client Side Routing](#client-side-routing)
 
   Select **Add Task** and add a new **Copy Files**
 
