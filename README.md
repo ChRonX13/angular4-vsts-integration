@@ -9,30 +9,78 @@ This seed project has been created to assist fast tracking some of the issues th
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2 and is based on the [Angular Tour of Heroes tutorial](https://angular.io/tutorial)
 
+## Client Side Routing
+
+In order to get client side routing to work for an application on Azure App Service, we'll need to create a **web.config** file to issue a url redirect. Simply add the below snippet to a web.config file to the root of the project. See documentation [here](https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml)
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <rule name="AngularJS Routes" stopProcessing="true">
+          <match url=".*" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="/" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
+```
+
+## Setup PhantomJS Configuration
+
 ## Create VSTS Build Definition
 
 This section involves creating the Build definition in VSTS in order to build the application ready for deployment. Credit to [Seth Reid's article](https://sethreid.co.nz/deploying-angular-cli-project-using-vsts-build-release/) for pointing me to the majority of the grunt work.
 
 1. Create a new Empty build process in VSTS
 
+2. Click on **Process** and ensure that the **Default agent queue** is set to **Hosted VS2017**. This will help prevent issues later on with PhantomJS and how it resolves the npm dependancy as documented [here](https://github.com/Microsoft/vsts-tasks/issues/1486)
 
-## Code scaffolding
+3. Set **Get sources** to the location of your repository
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+4. Select **Add Task** and add a new **npm task**. This step will install the npm dependancies of the project.
 
-## Build
+5. Select **Add Task** and add a new **npm task**. This step will build the project. We'll execute the npm build command, which is mapped to a ng build as defined in the Angular project.json file.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Set **Command** to _custom_
 
-## Running unit tests
+Set **Command and arguments** to _run build_
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+6. Select **Add Task** and add a new **npm task**. This step will execute the Karma tests associated with the project.
 
-## Running end-to-end tests
+Set **Command** to _custom_
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Set **Command and arguments** to _test -- --watch=false --single-run=true --reporters=junit,progress --browsers=PhantomJS_
 
-## Further help
+7. Select **Add Task** and add a new **Publish Test Results task**. This step will publish the JUnit formatted test results from the Karma execution.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Set **Test result format** to _JUnit_
+
+Set **Test results files** to _testresults\**\test.xml_
+
+8. In order to enable client side routing on the Azure App Service, we'll need to copy the web.config file into the distribution folder for packaging. [Client Side Routing](##client-side-routing)
+
+Select **Add Task** and add a new **Copy Files**
+
+Set **Contents** to _web.config_
+
+Set **Target Folder** to _dist_
+
+9. Select **Add Task** and add a new **Archive Files**. This step will bundle up the files from the /dist folder into a zip, ready for publishing into the Release pipeline.
+
+Set Root folder (or file) to archive
+
+10. Select **Add Task** and add a new **Publish Build Artifacts**. This step will publish the package that was just created as a build artifact. This will then be consumed by the Release definition that we shall create.
+
+Set **Path to Publish** to _$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip_
+
+Set **Artifact Name** to _drop_
+
+## Create VSTS Release Definition
