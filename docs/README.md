@@ -58,6 +58,7 @@ This section involves creating the Build definition in VSTS in order to build th
 * Select **Add Task** and add a new **npm task**. This step will build the project. We'll execute the npm build command, which is mapped to a ng build as defined in the Angular project.json file.
 
   Set **Command** to _custom_
+  
   Set **Command and arguments** to _run build_
   
   ![](build.PNG)
@@ -75,6 +76,7 @@ This section involves creating the Build definition in VSTS in order to build th
   ![](publishtestresults.PNG)
 
   Set **Test result format** to _JUnit_
+  
   Set **Test results files** to _testresults\**\test.xml_
 
   ![](testresults.PNG)
@@ -86,6 +88,7 @@ This section involves creating the Build definition in VSTS in order to build th
   ![](copy.PNG)
 
   Set **Contents** to _web.config_
+  
   Set **Target Folder** to _dist_
 
   ![](copyfiles.PNG)
@@ -103,6 +106,7 @@ This section involves creating the Build definition in VSTS in order to build th
   ![](publishpackagetask.PNG)
 
   Set **Path to Publish** to _$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip_
+  
   Set **Artifact Name** to _drop_
 
   ![](publishpackage.PNG)
