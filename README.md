@@ -1,10 +1,20 @@
-# AngularTourOfHeroes
+# Integrating Angular4 application with VSTS and Azure App Service
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
+This seed project has been created to assist fast tracking some of the issues that can arise when integrating an Angular 4 application with VSTS. This project aims to achieve the following goals:
 
-## Development server
+- setup a Build definition that builds and tests an Angular 4 application
+- setup PhantomJS for headless testing as part of Build definition
+- publish test results from Karma as part of the Build
+- setup Release configuration to Publish this application to an Azure App Service
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2 and is based on the [Angular Tour of Heroes tutorial](https://angular.io/tutorial)
+
+## Create VSTS Build Definition
+
+This section involves creating the Build definition in VSTS in order to build the application ready for deployment. Credit to [Seth Reid's article](https://sethreid.co.nz/deploying-angular-cli-project-using-vsts-build-release/) for pointing me to the majority of the grunt work.
+
+1. Create a new Empty build process in VSTS
+
 
 ## Code scaffolding
 
