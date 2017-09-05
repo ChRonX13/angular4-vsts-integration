@@ -73,7 +73,7 @@ This section involves the setup and configuration of [PhantomJS](http://phantomj
   
 ### Polyfills
 
-In order to get PhantomJS to work with the tests, some polyfills (or JavaScript fallbacks) are required to be enabled. Edit the `polyfills.ts` file in the `app` directory and uncomment the following polyfills.
+In order to get PhantomJS to work with the tests, some polyfills (or JavaScript fallbacks) are required to be enabled. Edit the `polyfills.ts` file in the `src` directory and uncomment the following polyfills.
 
 ```ts
  import 'core-js/es6/symbol';
