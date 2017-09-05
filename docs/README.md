@@ -59,7 +59,7 @@ This section involves the setup and configuration of [PhantomJS](http://phantomj
   
   Add `require('karma-junit-reporter')`
 
-  Modify browsers configured `browsers: ['PhantomJS']`
+  Modify browsers configured `browsers: ['Chrome', 'PhantomJS']`
   
   Add JUnit to array of reporters `reporters: ['progress', 'kjhtml', 'junit'],`
   
@@ -81,6 +81,16 @@ In order to get PhantomJS to work with the tests, some polyfills (or JavaScript 
  import 'core-js/es6/string';
  import 'core-js/es6/array';
 ```
+
+---
+
+At this juncture, you will have successfully setup your Angular project with support for running tests using PhantomJS. If you wish to see this in action, you can do so running the following command
+
+`npm test -- --watch=false --single-run=true --reporters=junit,progress --browsers=PhantomJS`
+
+The above command will execute your tests **once** using PhantomJS and output any results to the report files.
+
+---
 
 ## Create VSTS Build Definition
 
