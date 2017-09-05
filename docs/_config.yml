@@ -1,5 +1,7 @@
 title: Integrating Angular4 application with VSTS and Azure App Service
 
+description: This seed project has been created to assist fast tracking some of the issues that can arise when integrating an Angular 4 application with VSTS.
+
 plugins:
   - jekyll-seo-tag
 
