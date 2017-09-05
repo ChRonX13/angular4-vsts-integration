@@ -9,6 +9,8 @@ This seed project has been created to assist fast tracking some of the issues th
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2 and is based on the [Angular Tour of Heroes tutorial](https://angular.io/tutorial)
 
+Please note, this guide is not intended to be an overview of how to create an Angular application. First point of call is to [start here](https://angular.io/guide/quickstart)
+
 ## Client Side Routing
 
 In order to get client side routing to work for an application on Azure App Service, we'll need to create a `web.config` file to issue a url redirect. Simply add the below snippet to a `web.config` file to the root of the project. See documentation [here](https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml)
