@@ -13,7 +13,9 @@ Please note, this guide is not intended to be an overview of how to create an An
 
 ## Client Side Routing
 
-In order to get client side routing to work for an application on Azure App Service, we'll need to create a `web.config` file to issue a url redirect. Simply add the below snippet to a `web.config` file to the root of the project. See documentation [here](https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml)
+In order to get client side routing to work for an application on Azure App Service, we'll need to create a `web.config` file to issue a url redirect. Simply add the below snippet to a `web.config` file to the root of the project. 
+
+For **why** this is required or if you are hosting this application not on an IIS based web server, see [here](https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
